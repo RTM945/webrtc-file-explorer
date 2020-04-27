@@ -1,0 +1,15 @@
+{
+  "name": "webrtc-cli",
+  "version": "1.0.0",
+  "description": "webrtc client",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "RTM",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^7.1.10"
+  },
+  "dependencies": {}
+}

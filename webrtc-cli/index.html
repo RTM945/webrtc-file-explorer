@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>webrtc-cli</title>
+    <!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <div id="container" class="container">
+        <form>
+            <div class="form-group">
+                <label for="signal" class="control-label">signal</label>
+                <input type="text" class="form-control" id="signal">
+            </div>
+            <div class="form-group">
+                <label for="fileRoot" class="control-label">file root</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="fileRoot">
+                    <span class="input-group-btn">
+                        <button id="dirBtn" class="btn btn-default" type="button">
+                            <span class="glyphicon glyphicon-folder-open" aria-hidden="true">
+                            </span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="text-center">
+                    <button id="connectBtn" class="btn btn-default" type="button">connect</button>
+                </div>
+            </div>
+            <!-- <div class="form-group">
+                <label for="log" class="control-label">log</label>
+                <textarea class="form-control" rows="5" readonly></textarea>
+            </div> -->
+        </form>
+    </div>
+    <script src="./lib/jquery-3.2.1.js"></script>
+    <script src="./lib/bootstrap.min.js"></script>
+    <script src="./lib/sockjs.min.js"></script>
+    <script src="./lib/stomp.js"></script>
+    <script src="./lib/adapter.js"></script>
+    <script src="./index.js" charset="utf-8"></script>
+</body>
+
+</html>

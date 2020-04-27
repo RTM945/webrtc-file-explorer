@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Beautiful</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="modal fade" id="tokenModel" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">输入提取码</h4>
+                </div>
+                <div class="modal-body" style="height: 60px;padding: 0;">
+                    <input type="text" id="tokenInput" style="width:100%; height: 100%; font-size: 26px; text-align: center;" autofocus />
+                </div>
+                <div class="modal-footer">
+                    <button id="connectBtn" class="btn btn-primary">提取</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <div id="main" class="container">
+        <div class="row">
+            <div class="col-6">
+                <nav class="navbar navbar-default">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">WebRTC</a>
+                        </div>
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <a href="javascript:void(0)" onclick="listFilesReq('root')">
+                                        <span class="glyphicon glyphicon-home" aria-hidden="true"></span> 首页
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" onclick="showTasks()">
+                                        <span class="glyphicon glyphicon-save" aria-hidden="true"></span> 查看下载任务
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <ol id="breadcrumb" class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Library</a></li>
+                    <li class="active">Data</li>
+                </ol>
+                <div class="table-responsive">
+                    <table id="files" class="table table-hover" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th style="width: 60%;">文件名</th>
+                                <th style="width: 16%;">大小</th>
+                                <th style="width: 23%;">修改日期</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <table id="tasks" class="table table-hover" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th style="width: 40%;">文件名</th>
+                                <th style="width: 50%;">进度</th>
+                                <th style="width: 9%;">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/jquery-3.2.1.js"></script>
+    <script src="./js/sockjs.min.js"></script>
+    <script src="./js/stomp.js"></script>
+    <script src="./js/adapter.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script type="text/javascript">
+        $('#main').hide()
+        $('#tokenModel').on('shown.bs.modal', function () {
+            $('#tokenInput').focus()
+        })
+        $('#tokenModel').modal('show')
+        $('#connectBtn').on('click', function () {
+            $('#connectBtn').attr("disabled", true)
+            connect($('#tokenInput').val())
+        })
+    </script>
+</body>
+
+</html>
