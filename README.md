@@ -6,6 +6,4 @@
 
 ---
 
-## issue 
 - unpractical. 
-- webrtc-cli will throw "Can't buffer any more data for the data channel..." exception when transports big file.
