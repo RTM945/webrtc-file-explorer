@@ -1,4 +1,4 @@
-const servers = { iceServers: [{ "urls": ["stun:stun.l.google.com:19302"] }] }
+//const servers = { iceServers: [{ "urls": ["stun:stun.l.google.com:19302"] }] }
 const downloadTasks = new Map()
 
 var stompClient = null
@@ -28,7 +28,8 @@ function connect(token) {
 }
 
 function createPeer() {
-    let pc = new RTCPeerConnection(servers)
+    //let pc = new RTCPeerConnection(servers)
+    let pc = new RTCPeerConnection(null)
     console.log(pc)
     pc.onicecandidate = (event) => {
         if (event.candidate) {
@@ -156,7 +157,7 @@ function setProgress(task) {
                     </div>
                 </div>
             </td>
-            <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 取消</td>
+            <!--<td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 取消</td>-->
         </tr>`
     table.append(tr)
 }
@@ -176,9 +177,11 @@ function download(path) {
     protocolDataChannel.send(JSON.stringify({ handler: 'download', data: path }))
 }
 
+const downloadpreffix = 'download-'
 function recieveData(channel) {
-    let path = channel.label.split('-')[1]
+    let path = channel.label.substring(downloadpreffix.length)
     let myTask = downloadTasks.get(path)
+    console.log(myTask)
     if (myTask) {
         channel.binaryType = 'arraybuffer'
         channel.onmessage = ({ data }) => {

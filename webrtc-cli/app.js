@@ -133,7 +133,7 @@ ipc.on('download', (event, task) => {
     }
     const readStream = fs.createReadStream(filepath)
     readStream.on('data', chunk => {
-        task.received += chunk.length
-        win.webContents.send('sendData', task, chunk)
+        // task.received += chunk.length
+        win.webContents.send('sendData', task.channelId, chunk)
     })
 })
